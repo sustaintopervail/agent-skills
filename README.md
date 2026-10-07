@@ -13,6 +13,7 @@ They use the open `SKILL.md` format, so they work in Claude Code and in other ag
 | [update-deployment-changelog](update-deployment-changelog/) | Writes each session's changes into a deployment changelog, with a checklist of the manual steps a deploy needs. |
 | [commit-session-changes](commit-session-changes/) | Commits only this session's files, in the right repo, with a clear message that follows the repo's style. |
 | [time-logger](time-logger/) | Appends billable time entries to a CSV ledger, confirming estimates with you before writing. |
+| [remove-ai-writing-tells](remove-ai-writing-tells/) | Rewrites a post, article or email so it stops reading as AI-generated, keeping every fact and quote intact. |
 
 Several of these came from real incidents: a debugging session that lost hours to an unproven theory, and a "UI cleanup" commit that silently dropped a hidden field and a sync feature.
 
