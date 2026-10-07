@@ -1,0 +1,4 @@
+Date,Feature/Task,Time Spent (Hours),Description
+2026-06-08,Monday.com API Integration,2,"Connected order events to a Monday.com board and added retry handling for rate limits."
+2026-06-09,Subscription Bundle Builder,1.5,"Built recurring pricing hooks for bundled products and documented the approach."
+2026-06-10,Checkout Bug Fix,0.5,"Fixed a rounding error in the tax line, which showed ""0.01"" differences on some orders."
