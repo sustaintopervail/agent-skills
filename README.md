@@ -1,17 +1,19 @@
 # Agent Skills
 
-Practical skills for AI coding agents, taken from real client work as a full-stack developer (PHP, WordPress, WooCommerce, AWS). Each skill is a folder with a `SKILL.md` that tells the agent when to use it and exactly what to do.
+Practical skills for AI coding agents, developed from real failures in client projects (PHP, WordPress, WooCommerce, AWS), focused on preserving behavior and capturing deployment dependencies. Each skill is a folder with a `SKILL.md` that tells the agent when to use it and what to do.
 
-They use the open `SKILL.md` format, so they work in Claude Code and in other agents that read skill folders. The instructions use plain wording ("read the file", "append a row") rather than tool names from any one agent.
+They use the `SKILL.md` skill-folder format that Claude Code reads. The instructions use plain wording ("read the file", "append a row") rather than tool names from any one agent, so they should port to other agents that read skill folders, but that hasn't been tested.
+
+**Status: early release.** These skills encode safeguards that helped on real projects. They haven't yet been measured with repeated with-and-without runs, so treat them as checklists that reduce risk, not guarantees.
 
 ## Skills
 
 | Skill | What it does |
 |---|---|
-| [evidence-first-debugging](evidence-first-debugging/) | Makes the agent prove a root cause with logs or queries before fixing anything, and check caches, dead duplicate files and every code path. |
-| [refactor-deletion-check](refactor-deletion-check/) | Reviews removed lines before a refactor is committed, catching hidden fields, handlers, hooks and includes that vanish without an error. |
+| [evidence-first-debugging](evidence-first-debugging/) | Has the agent label hypotheses and confirm a cause with evidence before fixing it, and check caches, dead duplicate files and every code path. |
+| [refactor-deletion-check](refactor-deletion-check/) | Before a refactor is committed, maps each removed hidden field, handler, hook and include to where it went and how that was verified. |
 | [update-deployment-changelog](update-deployment-changelog/) | Writes each session's changes into a deployment changelog, with a checklist of the manual steps a deploy needs. |
-| [commit-session-changes](commit-session-changes/) | Commits only this session's files, in the right repo, with a clear message that follows the repo's style. |
+| [commit-session-changes](commit-session-changes/) | Commits only this session's changes, down to individual hunks in shared files, with a message in the repo's style. |
 | [time-logger](time-logger/) | Appends billable time entries to a CSV ledger, confirming estimates with you before writing. |
 
 Several of these came from real incidents: a debugging session that lost hours to an unproven theory, and a "UI cleanup" commit that silently dropped a hidden field and a sync feature.
@@ -24,11 +26,12 @@ Git tracks code changes. It doesn't track the coupon you created in the admin pa
 
 ```markdown
 ### Manual Actions
-- [ ] **Create the `SIBLING10` coupon** (10% off, percentage discount) in WooCommerce on staging, then production: the code applies it by code name and does nothing if it's missing.
-- [ ] **Clear the page cache** after deploying so the cart shows the discount line.
+- [ ] **Create the `SIBLING10` coupon** (10% off, percentage discount) in WooCommerce on staging: the code applies it by code name and does nothing if it's missing.
+- [ ] **Create the `SIBLING10` coupon** on production, with the same settings.
+- [ ] **Verify:** whether the page cache needs clearing after deploy for the cart to show the discount line.
 ```
 
-If a session needed no manual steps, the entry says `- None`, so you know it was checked rather than skipped. See a [full example changelog](update-deployment-changelog/examples/DEPLOYMENT-CHANGELOG.md).
+Each environment gets its own item, and anything nobody has confirmed is marked **Verify:** so the agent doesn't present a guess as a requirement. If a session needed no manual steps, the entry says `- None`, so you know it was checked rather than skipped. See a [full example changelog](update-deployment-changelog/examples/DEPLOYMENT-CHANGELOG.md).
 
 ## Install
 
