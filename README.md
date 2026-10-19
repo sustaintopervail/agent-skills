@@ -13,6 +13,7 @@ They use the open `SKILL.md` format, so they work in Claude Code and in other ag
 | [update-deployment-changelog](update-deployment-changelog/) | Writes each session's changes into a deployment changelog, with a checklist of the manual steps a deploy needs. |
 | [commit-session-changes](commit-session-changes/) | Commits only this session's files, in the right repo, with a clear message that follows the repo's style. |
 | [time-logger](time-logger/) | Appends billable time entries to a CSV ledger, confirming estimates with you before writing. |
+| [upwork-proposal-writer](upwork-proposal-writer/) | Writes Upwork proposals and screening answers with eight persuasion rules, matching the style to the reader and keeping every claim true. |
 
 Several of these came from real incidents: a debugging session that lost hours to an unproven theory, and a "UI cleanup" commit that silently dropped a hidden field and a sync feature.
 
@@ -67,6 +68,18 @@ Just ask in plain language:
 - "Update the deployment changelog with what we just did."
 - "Log 1.5 hours for the subscription bundle work."
 - "Log time for this." (the agent estimates and asks you to confirm)
+- "Write a proposal for this Upwork job: [link]." (paste the job post if the agent can't open Upwork)
+
+### Writing Upwork proposals
+
+`upwork-proposal-writer` works best when the agent can see your real record. Give it:
+
+- **The job:** a link, or the full post pasted in, including any screening questions.
+- **Your proof:** one or two real five-star reviews, word for word, and the totals your profile shows today (contracts, hours, earnings).
+- **Your stories:** a bug you tracked down, or a recent project and your part in it. Say which work is under NDA.
+- **Your limits:** the hours you can cover and the lowest rate you'll accept.
+
+It reads the post first, picks a sales style for business owners or a plain style for technical reviewers, and asks you to confirm any detail it had to assume. It shows you the full proposal before anything is sent. With an Upwork connector it can submit for you, but only after you say yes.
 
 ## Contributing
 
