@@ -79,6 +79,8 @@ Just ask in plain language:
 - **Your stories:** a bug you tracked down, or a recent project and your part in it. Say which work is under NDA.
 - **Your limits:** the hours you can cover and the lowest rate you'll accept.
 
+The eight persuasion rules follow a freelancing coach's proposal framework. The honesty rules and the style switch for technical readers came from applying it to real jobs.
+
 It reads the post first, picks a sales style for business owners or a plain style for technical reviewers, and asks you to confirm any detail it had to assume. It shows you the full proposal before anything is sent. With an Upwork connector it can submit for you, but only after you say yes.
 
 ## Contributing
